@@ -54,11 +54,12 @@ if (-not $generator) {
   Write-Info "Found generator: $generator"
   if ($generator -like '*.bat') {
     Write-Info "Running batch generator: $generator"
-    & cmd /c `"$generator" `"$UProjectPath`"`n
-    if ($LASTEXITCODE -ne 0) { Abort "GenerateProjectFiles failed with exit code $LASTEXITCODE" }
+    $arg = '/c "' + $generator + '" "' + $UProjectPath + '"'
+    $proc = Start-Process -FilePath 'cmd.exe' -ArgumentList $arg -NoNewWindow -PassThru -Wait
+    if ($proc.ExitCode -ne 0) { Abort ("GenerateProjectFiles failed with exit code $($proc.ExitCode)") }
   } else {
     Write-Info "Attempting to run UnrealBuildTool for project generation"
-    & "$generator" -projectfiles -project=`"$UProjectPath`" -game
+    & $generator -projectfiles -project $UProjectPath -game
     if ($LASTEXITCODE -ne 0) { Abort "UnrealBuildTool failed with exit code $LASTEXITCODE" }
   }
 }
@@ -66,7 +67,7 @@ if (-not $generator) {
 # Create .uprojectdirs to help the Editor find the project
 $uprojectdirs = ".uprojectdirs"
 if (-not (Test-Path $uprojectdirs)) {
-  "`$(Get-Location)\$UProjectPath" | Out-File -FilePath $uprojectdirs -Encoding UTF8
+  ((Get-Location).Path + "\" + $UProjectPath) | Out-File -FilePath $uprojectdirs -Encoding UTF8
   Write-Info "Created $uprojectdirs"
 }
 
@@ -104,4 +105,4 @@ foreach ($e in $entries) {
 }
 Write-Info "Updated $gitignore with Unreal recommendations."
 
-Write-Info "Generation complete. Open the generated `.sln` in Visual Studio or launch the Editor by double-clicking the .uproject file."
+Write-Info "Generation complete. Open the generated .sln in Visual Studio or launch the Editor by double-clicking the .uproject file."
