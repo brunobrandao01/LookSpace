@@ -1,5 +1,10 @@
 # Cinematic
 
+Pastas e guias para cenas, sequencing e presets de câmera.
+
+Inclui: `cinematic/SCENE_001_PLAN.md` e Sequencer templates.
+# Cinematic
+
 The `cinematic/` domain contains blueprints for the cinematic rendering pipeline, storytelling sequences, and camera-driven visual systems.
 
 ## Responsibilities
