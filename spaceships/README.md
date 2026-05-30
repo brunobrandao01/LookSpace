@@ -1,5 +1,10 @@
 # Spaceships
 
+Estrutura para modelos de espaçonaves, LODs e materiais protótipo.
+
+Import `Assets/Blockout/ship.obj` para testar comportamento e collision.
+# Spaceships
+
 The `spaceships/` domain contains prototype architecture and engineering systems for LookSpace spacecraft.
 
 ## Responsibilities

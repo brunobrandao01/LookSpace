@@ -1,5 +1,10 @@
 # Environments
 
+Placeholders e estrutura para ambientes (Earth, Moon, DeepSpace).
+
+Use as `Content` imports no UE5 Editor a partir dos OBJ em `Assets/Blockout`.
+# Environments
+
 Arquitetura para ambientes do projeto (Terra, Space, Planets, Stations).
 
 Cada pasta deve conter: `README.md`, `reference_images/`, `assets/`, `level_links/`.
