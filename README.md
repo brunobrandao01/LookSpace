@@ -41,6 +41,14 @@ Build a scalable foundation for immersive universe exploration with realistic sp
 - `systems/` — modular spaceship, mission, and engineering systems.
 - `multiplayer/` — networking architecture, session services, and sync contracts.
 - `rendering/` — rendering architecture, performance guidance, and effect pipelines.
+- `cinematic/` — cinematic shot and sequencing foundation.
+- `planets/` — planet rendering and environment systems.
+- `spaceships/` — spaceship prototype architecture.
+- `cameras/` — immersive camera systems and rigs.
+- `lighting/` — cinematic lighting systems and workflows.
+- `environments/` — environment design and scene composition.
+- `unreal/` — Unreal Engine integration and workspace guidance.
+- `visual-docs/` — visual system documentation and references.
 - `docs/` — architecture, strategy, pipeline documentation, and technical references.
 
 ## Getting Started

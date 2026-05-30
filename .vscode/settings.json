@@ -11,7 +11,8 @@
     "**/Binaries": true,
     "**/DerivedDataCache": true,
     "**/Intermediate": true,
-    "**/Saved": true
+    "**/Saved": true,
+    "**/.uprojectdirs": true
   },
   "search.exclude": {
     "**/node_modules": true,

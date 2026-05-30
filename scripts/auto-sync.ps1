@@ -15,16 +15,17 @@ function Abort([string]$text) {
   exit 1
 }
 
-function Invoke-Git([string[]]$args) {
-  $result = & $gitExe @args 2>&1
+function Invoke-Git([string[]]$gitArgs) {
+  $result = & $gitExe @gitArgs 2>&1
   if ($LASTEXITCODE -ne 0) {
-    Abort("Git command failed: $gitExe $($args -join ' ')`n$result")
+    Abort("Git command failed: $gitExe $($gitArgs -join ' ')`n$result")
   }
   return $result
 }
 
 $scriptRoot = Split-Path -Parent $MyInvocation.MyCommand.Path
-Set-Location $scriptRoot
+$repoRoot = Split-Path -Parent $scriptRoot
+Set-Location $repoRoot
 
 if (-not (Test-Path '.git')) {
   Abort 'This script must be run from the repository root where the .git folder exists.'
@@ -88,9 +89,9 @@ if ($remoteBranchExists) {
     $parts = $counts -split "\t"
     $behind = [int]$parts[0]
     $ahead = [int]$parts[1]
-    Write-Info "Branch status relative to $remoteBranchRef: ahead=$ahead behind=$behind"
+    Write-Info ("Branch status relative to {0}: ahead={1} behind={2}" -f $remoteBranchRef, $ahead, $behind)
     if ($behind -gt 0 -and -not $Force) {
-      Abort "Local branch is behind remote by $behind commit(s). Pull remote changes before syncing or use -Force with caution."
+      Abort ("Local branch is behind remote by $behind commit(s). Pull remote changes before syncing or use -Force with caution.")
     }
   }
 }
@@ -112,7 +113,7 @@ if (-not $DryRun) {
 }
 
 $upstreamSet = $false
-& $gitExe rev-parse --abbrev-ref --symbolic-full-name @{u} > $null 2>&1
+& $gitExe rev-parse --abbrev-ref --symbolic-full-name '@{u}' > $null 2>&1
 if ($LASTEXITCODE -eq 0) {
   $upstreamSet = $true
 }
@@ -127,7 +128,7 @@ if ($Force) {
 
 Write-Info "Pushing changes to $Remote/$currentBranch..."
 if (-not $DryRun) {
-  Invoke-Git('push', $pushArgs)
+  Invoke-Git(@('push') + $pushArgs)
   Write-Info 'Push completed successfully.'
 }
 
