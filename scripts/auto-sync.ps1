@@ -70,20 +70,20 @@ if ($DryRun) {
 }
 
 Write-Info "Fetching remote branch $Remote/$Branch..."
-& git fetch $Remote $Branch --quiet
+& $gitExe fetch $Remote $Branch --quiet
 if ($LASTEXITCODE -ne 0) {
   Write-Info "Remote fetch failed or branch $Remote/$Branch does not exist yet. Continuing with local sync."
 }
 
 $remoteBranchRef = "$Remote/$Branch"
 $remoteBranchExists = $false
-& git show-ref --verify --quiet "refs/remotes/$remoteBranchRef"
+& $gitExe show-ref --verify --quiet "refs/remotes/$remoteBranchRef"
 if ($LASTEXITCODE -eq 0) {
   $remoteBranchExists = $true
 }
 
 if ($remoteBranchExists) {
-  $counts = & git rev-list --left-right --count "$remoteBranchRef...HEAD"
+  $counts = & $gitExe rev-list --left-right --count "$remoteBranchRef...HEAD"
   if ($LASTEXITCODE -eq 0) {
     $parts = $counts -split "\t"
     $behind = [int]$parts[0]
@@ -95,7 +95,7 @@ if ($remoteBranchExists) {
   }
 }
 
-$status = & git status --porcelain --untracked-files=all
+$status = & $gitExe status --porcelain --untracked-files=all
 if (-not $status) {
   Write-Info 'No created or modified files detected. Nothing to sync.'
   exit 0
@@ -108,14 +108,11 @@ if (-not $DryRun) {
 
 Write-Info "Preparing commit message: $Message"
 if (-not $DryRun) {
-  & git commit -m "$Message"
-  if ($LASTEXITCODE -ne 0) {
-    Abort 'Commit failed. There may be no staged changes or another Git issue occurred.'
-  }
+  Invoke-Git('commit', '-m', "$Message")
 }
 
 $upstreamSet = $false
-& git rev-parse --abbrev-ref --symbolic-full-name @{u} > $null 2>&1
+& $gitExe rev-parse --abbrev-ref --symbolic-full-name @{u} > $null 2>&1
 if ($LASTEXITCODE -eq 0) {
   $upstreamSet = $true
 }
