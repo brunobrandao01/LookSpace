@@ -1,5 +1,13 @@
 # Shaders
 
+Repositório de shaders de referência e componentes reutilizáveis.
+
+Organização inicial:
+- `shaders/atmosphere/`
+- `shaders/clouds/`
+- `shaders/surface/`
+# Shaders
+
 The `shaders/` domain houses shared shader architecture, material utilities, and rendering effect definitions.
 
 ## Responsibilities

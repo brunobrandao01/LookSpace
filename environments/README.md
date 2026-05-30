@@ -1,5 +1,10 @@
 # Environments
 
+Arquitetura para ambientes do projeto (Terra, Space, Planets, Stations).
+
+Cada pasta deve conter: `README.md`, `reference_images/`, `assets/`, `level_links/`.
+# Environments
+
 The `environments/` domain contains environment design, scene composition, and world-building guidance.
 
 ## Responsibilities

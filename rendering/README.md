@@ -1,3 +1,10 @@
+# Rendering Systems
+
+Pasta para implementações, exemplos e presets de pipelines de render utilizados pelo LookSpace.
+
+Estrutura proposta:
+- `rendering/pipelines/` — definições de passes e presets.
+- `rendering/passes/` — HLSL/GLSL snippets e configurações.
 # Rendering
 
 The `rendering/` domain houses shared rendering architecture, shader references, and cinematic pipeline documentation.
