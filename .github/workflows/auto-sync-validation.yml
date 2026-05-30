@@ -1,0 +1,61 @@
+name: Auto Sync Validation
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  validate-structure:
+    name: Validate LookSpace structure
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate required directories and documentation
+        shell: pwsh
+        run: |
+          $requiredDirs = @(
+            'client',
+            'server',
+            'universe',
+            'ai',
+            'website',
+            'assets',
+            'scripts',
+            'shaders',
+            'systems',
+            'multiplayer',
+            'rendering',
+            'docs'
+          )
+          foreach ($dir in $requiredDirs) {
+            if (-not (Test-Path $dir)) {
+              throw "Missing required directory: $dir"
+            }
+          }
+
+          $requiredFiles = @(
+            'README.md',
+            '.gitignore',
+            'CONTRIBUTING.md',
+            'LICENSE',
+            'docs/README.md',
+            'docs/ARCHITECTURE.md',
+            'docs/ROADMAP.md',
+            'docs/PIPELINE.md',
+            'docs/PROJECT_OVERVIEW.md',
+            'docs/GIT_AUTOSYNC.md',
+            'docs/UNIVERSE_ENGINE.md',
+            'docs/PROCEDURAL_GENERATION.md',
+            'docs/RENDERING_ENGINE.md',
+            'docs/SPACESHIP_SYSTEMS.md',
+            'docs/MULTIPLAYER_ARCHITECTURE.md',
+            'docs/AI_SYSTEMS.md',
+            'docs/CINEMATIC_RENDERING.md'
+          )
+          foreach ($file in $requiredFiles) {
+            if (-not (Test-Path $file)) {
+              throw "Missing required file: $file"
+            }
+          }

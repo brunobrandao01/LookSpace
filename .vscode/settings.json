@@ -1,0 +1,29 @@
+{
+  "files.autoSave": "afterDelay",
+  "files.autoSaveDelay": 1000,
+  "git.autofetch": true,
+  "git.enableSmartCommit": false,
+  "git.confirmSync": false,
+  "git.allowForcePush": false,
+  "files.exclude": {
+    "**/.git": true,
+    "**/node_modules": true,
+    "**/Binaries": true,
+    "**/DerivedDataCache": true,
+    "**/Intermediate": true,
+    "**/Saved": true
+  },
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/Binaries": true,
+    "**/DerivedDataCache": true,
+    "**/Intermediate": true,
+    "**/Saved": true
+  },
+  "files.watcherExclude": {
+    "**/Binaries/**": true,
+    "**/DerivedDataCache/**": true,
+    "**/Intermediate/**": true,
+    "**/Saved/**": true
+  }
+}

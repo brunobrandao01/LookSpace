@@ -1,0 +1,56 @@
+# Unreal Engine
+Binaries/
+DerivedDataCache/
+Intermediate/
+Saved/
+*.xcodeproj
+*.xcworkspace
+*.sln
+*.opensdf
+*.sdf
+*.suo
+*.user
+*.userprefs
+*.usermap
+*.log
+*.vs/
+*.tmp
+*.cache
+
+# Node / TypeScript
+node_modules/
+pnpm-lock.yaml
+yarn.lock
+package-lock.json
+dist/
+build/
+.eslintcache
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.DS_Store
+Thumbs.db
+
+# Supabase
+supabase/config.toml
+.supabase/
+
+# Vercel
+.vercel/
+
+# Generated assets
+*.pdb
+*.ipch
+*.obj
+*.apk
+*.xcuserstate
+*.psd
+*.tga
+*.fbx
+
+# OS Files
+Thumbs.db
+.DS_Store
+*.swp
+*.swo
+*~
