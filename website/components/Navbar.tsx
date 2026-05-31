@@ -1,33 +1,13 @@
-'use client';
-
-import { motion } from 'framer-motion';
-
-const navItems = ['Universe', 'Roadmap', 'Prototype', 'Contact'];
-
+"use client";
 export default function Navbar() {
   return (
-    <motion.nav
-      initial={{ opacity: 0, y: -20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.7, ease: 'easeOut' }}
-      className="relative z-20 flex items-center justify-between border-b border-white/10 pb-4 text-sm text-slate-300"
-    >
-      <div className="flex items-center gap-3">
-        <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-br from-cyan-400 to-fuchsia-500 text-lg font-bold text-black shadow-glow">
-          L
-        </div>
-        <div>
-          <p className="font-semibold text-white">LookSpace</p>
-          <p className="text-[11px] uppercase tracking-[0.35em] text-slate-500">Cinematic Universe</p>
-        </div>
+    <nav className="flex items-center justify-between py-4">
+      <span className="text-xl font-bold tracking-widest text-white">LOOKSPACE</span>
+      <div className="flex gap-6 text-sm text-slate-300">
+        <a href="#" className="hover:text-white transition-colors">Universe</a>
+        <a href="#" className="hover:text-white transition-colors">Roadmap</a>
+        <a href="#" className="hover:text-white transition-colors">About</a>
       </div>
-      <div className="hidden items-center gap-8 lg:flex">
-        {navItems.map((item) => (
-          <a key={item} href={`#${item.toLowerCase()}`} className="transition hover:text-white">
-            {item}
-          </a>
-        ))}
-      </div>
-    </motion.nav>
+    </nav>
   );
 }
