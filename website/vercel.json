@@ -1,25 +1,10 @@
 {
   "version": 2,
   "public": true,
-  "buildCommand": "npm run build",
-  "outputDirectory": ".next",
-  "installCommand": "npm ci",
   "env": {
     "NEXT_PUBLIC_APP_NAME": "LookSpace",
     "NEXT_PUBLIC_APP_VERSION": "0.1.0"
   },
-  "builds": [
-    {
-      "src": "package.json",
-      "use": "@vercel/next"
-    }
-  ],
-  "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "/$1"
-    }
-  ],
   "headers": [
     {
       "source": "/api/:path*",
