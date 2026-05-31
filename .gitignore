@@ -21,7 +21,7 @@ Saved/
 node_modules/
 pnpm-lock.yaml
 yarn.lock
-package-lock.json
+.next/
 dist/
 build/
 .eslintcache
