@@ -1,0 +1,133 @@
+{
+  "blockout_import_presets": {
+    "earth": {
+      "description": "Low-poly Earth planet blockout",
+      "source_file": "earth.obj",
+      "destination_folder": "/Game/Blockout",
+      "import_settings": {
+        "import_uniform_scale": 100.0,
+        "import_normals_and_tangents": true,
+        "generate_lightmap_uvs": true,
+        "create_physics_asset": false
+      },
+      "post_import": {
+        "move_to_folder": "/Game/Environments/Earth",
+        "collision_type": "complex_as_simple",
+        "naming_convention": "SM_Earth_Blockout"
+      }
+    },
+    "moon": {
+      "description": "Low-poly Moon blockout",
+      "source_file": "moon.obj",
+      "destination_folder": "/Game/Blockout",
+      "import_settings": {
+        "import_uniform_scale": 50.0,
+        "import_normals_and_tangents": true,
+        "generate_lightmap_uvs": true,
+        "create_physics_asset": false
+      },
+      "post_import": {
+        "move_to_folder": "/Game/Environments/DeepSpace",
+        "collision_type": "complex_as_simple",
+        "naming_convention": "SM_Moon_Blockout"
+      }
+    },
+    "ship": {
+      "description": "Low-poly Spaceship blockout",
+      "source_file": "ship.obj",
+      "destination_folder": "/Game/Blockout",
+      "import_settings": {
+        "import_uniform_scale": 20.0,
+        "import_normals_and_tangents": true,
+        "generate_lightmap_uvs": false,
+        "create_physics_asset": true
+      },
+      "post_import": {
+        "move_to_folder": "/Game/Spaceships",
+        "collision_type": "complex_as_simple",
+        "naming_convention": "SM_Ship_Blockout"
+      }
+    },
+    "station": {
+      "description": "Low-poly Space Station blockout",
+      "source_file": "station.obj",
+      "destination_folder": "/Game/Blockout",
+      "import_settings": {
+        "import_uniform_scale": 30.0,
+        "import_normals_and_tangents": true,
+        "generate_lightmap_uvs": true,
+        "create_physics_asset": false
+      },
+      "post_import": {
+        "move_to_folder": "/Game/Environments/DeepSpace",
+        "collision_type": "complex_as_simple",
+        "naming_convention": "SM_Station_Blockout"
+      }
+    },
+    "camera_marker": {
+      "description": "Camera placement marker (pyramid)",
+      "source_file": "camera_marker.obj",
+      "destination_folder": "/Game/Blockout",
+      "import_settings": {
+        "import_uniform_scale": 10.0,
+        "import_normals_and_tangents": false,
+        "generate_lightmap_uvs": false,
+        "create_physics_asset": false
+      },
+      "post_import": {
+        "move_to_folder": "/Game/Cameras",
+        "collision_type": "no_collision",
+        "naming_convention": "SM_CameraMarker"
+      }
+    }
+  },
+  "material_templates": {
+    "M_PlanetBase": {
+      "description": "Base material for planet surfaces",
+      "properties": {
+        "base_color": [0.2, 0.4, 0.9],
+        "metallic": 0.0,
+        "roughness": 0.8,
+        "emissive": [0.0, 0.0, 0.0]
+      }
+    },
+    "M_Emissive_Thruster": {
+      "description": "Emissive material for spaceship thrusters",
+      "properties": {
+        "base_color": [1.0, 0.5, 0.0],
+        "metallic": 0.0,
+        "roughness": 0.2,
+        "emissive": [2.0, 1.0, 0.0]
+      }
+    },
+    "M_MetalShip": {
+      "description": "Metallic material for ship hull",
+      "properties": {
+        "base_color": [0.5, 0.5, 0.5],
+        "metallic": 1.0,
+        "roughness": 0.3,
+        "emissive": [0.0, 0.0, 0.0]
+      }
+    }
+  },
+  "rendering_presets": {
+    "cinematic_preview": {
+      "resolution": [1920, 1080],
+      "anti_aliasing": "FXAA",
+      "ray_tracing": false,
+      "lumen": true,
+      "nanite": true,
+      "volumetric_fog": true
+    },
+    "final_render": {
+      "resolution": [3840, 2160],
+      "anti_aliasing": "TAA",
+      "ray_tracing": true,
+      "lumen": true,
+      "nanite": true,
+      "volumetric_fog": true,
+      "output_format": "EXR",
+      "aov_passes": ["beauty", "depth", "motion_vectors", "emissive"]
+    }
+  }
+}
