@@ -1,4 +1,5 @@
 export type ShipTier = "free" | "unlock" | "premium";
+export type ShipRarity = "Common" | "Rare" | "Legendary" | "Mythic";
 
 export interface Ship {
   id: string;
@@ -6,6 +7,8 @@ export interface Ship {
   class: string;
   description: string;
   tier: ShipTier;
+  rarity: ShipRarity;
+  energy: string;
   unlockLevel?: number;
   speed: string;
   range: string;
@@ -21,6 +24,8 @@ export const ships: Ship[] = [
     class: "Explorador Leve",
     description: "A primeira nave de cada explorador. Ágil, silenciosa e perfeita para descobrir o sistema solar.",
     tier: "free",
+    rarity: "Common",
+    energy: "82%",
     speed: "0.3c",
     range: "Sistema Solar",
     shield: "Básico",
@@ -33,6 +38,8 @@ export const ships: Ship[] = [
     class: "Batedora Rápida",
     description: "Projetada para reconhecimento. Fende o espaço com precisão cirúrgica.",
     tier: "free",
+    rarity: "Common",
+    energy: "88%",
     speed: "0.5c",
     range: "Vizinhança Estelar",
     shield: "Médio",
@@ -45,6 +52,8 @@ export const ships: Ship[] = [
     class: "Cruzador Solar",
     description: "Construída para longas viagens. Carrega energia solar em reatores de fusão compactos.",
     tier: "free",
+    rarity: "Common",
+    energy: "76%",
     speed: "0.7c",
     range: "Região Galáctica",
     shield: "Reforçado",
@@ -57,6 +66,8 @@ export const ships: Ship[] = [
     class: "Nave de Deriva Livre",
     description: "Sem destino definido. Feita para quem quer apenas flutuar pelo cosmos e observar.",
     tier: "free",
+    rarity: "Common",
+    energy: "94%",
     speed: "0.6c",
     range: "Multi-Sistema",
     shield: "Adaptativo",
@@ -69,7 +80,9 @@ export const ships: Ship[] = [
     class: "Interceptor de Combate",
     description: "Desenhada nas margens do braço de Orion. Velocidade e precisão acima de tudo.",
     tier: "unlock",
+    rarity: "Rare",
     unlockLevel: 10,
+    energy: "79%",
     speed: "0.85c",
     range: "Braço Galáctico",
     shield: "Plasmático",
@@ -82,7 +95,9 @@ export const ships: Ship[] = [
     class: "Stealth Interestelar",
     description: "Invisível ao radar. Move-se através de nebulosas sem deixar rasto de energia.",
     tier: "unlock",
+    rarity: "Rare",
     unlockLevel: 25,
+    energy: "71%",
     speed: "0.95c",
     range: "Galáxia Local",
     shield: "Cloaking",
@@ -95,7 +110,9 @@ export const ships: Ship[] = [
     class: "Cargueiro Colossal",
     description: "Uma cidade espacial com motores. A maior nave explorável do universo LookSpace.",
     tier: "unlock",
+    rarity: "Rare",
     unlockLevel: 40,
+    energy: "89%",
     speed: "0.99c",
     range: "Universo Observável",
     shield: "Gravitacional",
@@ -108,6 +125,8 @@ export const ships: Ship[] = [
     class: "Caça de Dobra Quântica",
     description: "A fronteira entre matéria e energia. Viaja à velocidade da luz com dobra quântica real.",
     tier: "premium",
+    rarity: "Legendary",
+    energy: "100%",
     speed: "1.0c (dobra)",
     range: "Ilimitado",
     shield: "Quântico",
@@ -120,6 +139,8 @@ export const ships: Ship[] = [
     class: "Cruzador do Vazio",
     description: "Nascida no vazio entre galáxias. Opera além da física convencional.",
     tier: "premium",
+    rarity: "Legendary",
+    energy: "110%",
     speed: "10c (hiper)",
     range: "Multiverso",
     shield: "Dimensional",
@@ -132,6 +153,8 @@ export const ships: Ship[] = [
     class: "Nave-Mãe Lendária",
     description: "A nave mais poderosa já construída. Uma singularidade ambulante que dobra o próprio espaço-tempo.",
     tier: "premium",
+    rarity: "Mythic",
+    energy: "∞",
     speed: "∞ (singularidade)",
     range: "Omniversal",
     shield: "Singularidade",

@@ -3,15 +3,21 @@
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 
-const navItems = ['Universo', 'Naves', 'Roadmap', 'Prototype', 'Sobre'];
+const navItems = [
+  { label: 'Universo', href: '/#universo' },
+  { label: 'Sistema Solar', href: '/#sistema-solar' },
+  { label: 'Exploração', href: '/#exploracao' },
+  { label: 'Roadmap', href: '/#roadmap' },
+  { label: 'Naves', href: '/ships' },
+];
 
 export default function Navbar() {
   return (
     <motion.nav
-      initial={{ opacity: 0, y: -16 }}
+      initial={{ opacity: 0, y: -18 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6, ease: 'easeOut' }}
-      className="relative z-20 flex items-center justify-between border-b border-white/10 pb-4 text-sm text-slate-300"
+      transition={{ duration: 0.75, ease: 'easeOut' }}
+      className="relative z-20 flex flex-col gap-5 border-b border-white/10 pb-5 text-sm text-slate-300 lg:flex-row lg:items-center lg:justify-between"
     >
       <div className="flex items-center gap-3">
         <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-br from-cyan-400 to-fuchsia-500 text-lg font-bold text-black shadow-glow">
@@ -23,22 +29,16 @@ export default function Navbar() {
         </div>
       </div>
 
-      <div className="hidden items-center gap-8 lg:flex">
-        {navItems.map((item) => {
-          if (item === 'Naves') {
-            return (
-              <Link key={item} href="/ships" className="transition hover:text-white">
-                {item}
-              </Link>
-            );
-          }
-
-          return (
-            <a key={item} href={`#${item.toLowerCase()}`} className="transition hover:text-white">
-              {item}
-            </a>
-          );
-        })}
+      <div className="flex flex-wrap items-center gap-4 lg:gap-6">
+        {navItems.map((item) => (
+          <Link
+            key={item.label}
+            href={item.href}
+            className="rounded-full border border-white/10 px-4 py-2 transition hover:border-cyan-400 hover:text-white"
+          >
+            {item.label}
+          </Link>
+        ))}
       </div>
     </motion.nav>
   );

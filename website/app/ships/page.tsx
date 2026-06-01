@@ -47,7 +47,7 @@ export default function ShipsPage(): JSX.Element {
               Naves do universo LookSpace
             </h1>
             <p className="mt-4 max-w-3xl text-base leading-7 text-slate-300">
-              Explore o arsenal de naves com tiers de unlock, estatísticas de velocidade, alcance e escudo — tudo com estilo futurista e animações suaves.
+              Explore o arsenal de naves com tiers de unlock, estatísticas de velocidade, alcance, escudo e energia — tudo com estilo futurista e animações suaves.
             </p>
           </div>
           <Link
@@ -99,6 +99,17 @@ export default function ShipsPage(): JSX.Element {
                 </div>
               </div>
 
+              <div className="mt-4 grid gap-3 sm:grid-cols-2">
+                <div className="rounded-3xl border border-white/10 bg-slate-950/40 p-4">
+                  <p className="text-[11px] uppercase tracking-[0.35em] text-slate-500">Energia</p>
+                  <p className="mt-2 text-sm font-semibold text-white">{ship.energy}</p>
+                </div>
+                <div className="rounded-3xl border border-white/10 bg-slate-950/40 p-4">
+                  <p className="text-[11px] uppercase tracking-[0.35em] text-slate-500">Raridade</p>
+                  <p className="mt-2 text-sm font-semibold text-white">{ship.rarity}</p>
+                </div>
+              </div>
+
               {ship.unlockLevel ? (
                 <p className="mt-4 text-xs text-slate-400">
                   Desbloqueia no nível <span className="font-semibold text-slate-100">{ship.unlockLevel}</span>
@@ -106,9 +117,12 @@ export default function ShipsPage(): JSX.Element {
               ) : null}
 
               <div className="mt-6 flex flex-wrap gap-3">
-                <button className="rounded-full bg-cyan-400/15 px-5 py-2 text-sm font-semibold text-cyan-200 transition hover:bg-cyan-400/25">
-                  Ver detalhes
-                </button>
+                <Link
+                  href={`/ships/${ship.id}`}
+                  className="rounded-full bg-cyan-400/15 px-5 py-2 text-sm font-semibold text-cyan-200 transition hover:bg-cyan-400/25"
+                >
+                  Detalhes
+                </Link>
                 <button className="rounded-full border border-white/10 bg-white/5 px-5 py-2 text-sm text-white transition hover:border-fuchsia-400 hover:text-fuchsia-200">
                   Selecionar nave
                 </button>

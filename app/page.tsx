@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import dynamic from "next/dynamic";
 import Link from "next/link";
@@ -13,7 +13,6 @@ export default function Home() {
   const [state, setState] = useState<GameState>("intro");
   const [selectedShip, setSelectedShip] = useState(ships[0]);
   const [shipIndex, setShipIndex] = useState(0);
-  const audioRef = useRef<AudioContext | null>(null);
 
   // Sequência cinematográfica automática
   useEffect(() => {
@@ -24,6 +23,13 @@ export default function Home() {
       clearTimeout(t2);
     };
   }, []);
+
+  // Retorna ao menu após a animação de lançamento
+  useEffect(() => {
+    if (state !== "launch") return;
+    const timer = setTimeout(() => setState("menu"), 3200);
+    return () => clearTimeout(timer);
+  }, [state]);
 
   const freeShips = ships.filter((s) => s.tier === "free");
 
@@ -107,7 +113,7 @@ export default function Home() {
 
       {/* FASE 3 — Menu principal */}
       <AnimatePresence>
-        {(state === "menu" || state === "shipselect" || state === "launch") && (
+        {(state === "menu" || state === "shipselect") && (
           <motion.div
             key="menu"
             initial={{ opacity: 0 }}
@@ -349,11 +355,6 @@ export default function Home() {
               <p className="text-slate-600 text-xs mt-4 tracking-widest">MOTORES DE DOBRA ATIVADOS</p>
             </motion.div>
 
-            {/* Volta ao menu após animação */}
-            {(() => {
-              setTimeout(() => setState("menu"), 3200);
-              return null;
-            })()}
           </motion.div>
         )}
       </AnimatePresence>
