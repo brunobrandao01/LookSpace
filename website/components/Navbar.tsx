@@ -1,46 +1,45 @@
 "use client";
 
-import Link from "next/link";
+import { motion } from 'framer-motion';
+import Link from 'next/link';
+
+const navItems = ['Universo', 'Roadmap', 'Prototype', 'Sobre', 'Naves'];
 
 export default function Navbar() {
   return (
-    <nav className="flex items-center justify-between py-4">
-      <Link
-        href="/"
-        className="text-xl font-bold tracking-widest text-white hover:text-cyan-400 transition-colors"
-      >
-        LOOKSPACE
-      </Link>
-
-      <div className="flex gap-6 text-sm text-slate-300">
-        <Link
-          href="/#universo"
-          className="hover:text-white transition-colors"
-        >
-          Universo
-        </Link>
-
-        <Link
-          href="/ships"
-          className="hover:text-cyan-400 transition-colors"
-        >
-          Naves
-        </Link>
-
-        <Link
-          href="/roadmap"
-          className="hover:text-cyan-400 transition-colors"
-        >
-          Roadmap
-        </Link>
-
-        <Link
-          href="/#sobre"
-          className="hover:text-white transition-colors"
-        >
-          Sobre
-        </Link>
+    <motion.nav
+      initial={{ opacity: 0, y: -16 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6, ease: 'easeOut' }}
+      className="relative z-20 flex items-center justify-between border-b border-white/10 pb-4 text-sm text-slate-300"
+    >
+      <div className="flex items-center gap-3">
+        <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-br from-cyan-400 to-fuchsia-500 text-lg font-bold text-black shadow-glow">
+          L
+        </div>
+        <div>
+          <p className="font-semibold text-white">LookSpace</p>
+          <p className="text-[11px] uppercase tracking-[0.35em] text-slate-500">Cinematic Universe</p>
+        </div>
       </div>
-    </nav>
+
+      <div className="hidden items-center gap-8 lg:flex">
+        {navItems.map((item) => {
+          if (item === 'Naves') {
+            return (
+              <Link key={item} href="/ships" className="transition hover:text-white">
+                {item}
+              </Link>
+            );
+          }
+
+          return (
+            <a key={item} href={`#${item.toLowerCase()}`} className="transition hover:text-white">
+              {item}
+            </a>
+          );
+        })}
+      </div>
+    </motion.nav>
   );
 }
