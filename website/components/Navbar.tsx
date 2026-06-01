@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 
-const navItems = ['Universo', 'Roadmap', 'Prototype', 'Sobre', 'Naves'];
+const navItems = ['Universo', 'Naves', 'Roadmap', 'Prototype', 'Sobre'];
 
 export default function Navbar() {
   return (
